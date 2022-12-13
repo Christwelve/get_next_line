@@ -6,32 +6,17 @@
 /*   By: cmeng <cmeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:13:35 by cmeng             #+#    #+#             */
-/*   Updated: 2022/12/13 05:06:45 by cmeng            ###   ########.fr       */
+/*   Updated: 2022/12/13 06:20:55 by cmeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/get_next_line.h"
 
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t count, size_t size);
+char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strrchr(const char *s, int c);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-char	*ft_strdup(const char *s1);
-
-size_t	ft_strlen(const char *str)
-{
-	int	i;
-
-	if (str == NULL)
-		return (0);
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
+size_t	ft_strlen(const char *str);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -71,7 +56,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
 	ptr1 = ft_calloc(len, sizeof(char));
 	if (ptr1 == NULL)
-		return (NULL);
+		return (free(s1), NULL);
 	i = 0;
 	j = 0;
 	while (i < len)
@@ -83,6 +68,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		i++;
 	}
 	ptr1[i] = 0;
+	free(s1);
 	return (ptr1);
 }
 
@@ -114,55 +100,16 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-char	*ft_strrchr(const char *s, int c)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 
+	if (str == NULL)
+		return (0);
 	i = 0;
-	while (s[i] != '\0')
+	while (str[i] != '\0')
 	{
 		i++;
 	}
-	while (i >= 0)
-	{
-		if (s[i] == (char) c)
-			return ((char *)&s[i]);
-		i--;
-	}
-	return (NULL);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	char		*ptr1;
-	int			len;
-
-	len = ft_strlen(s1);
-	ptr1 = ft_calloc((len + 1), sizeof(char));
-	if (ptr1 == NULL)
-	{
-		return (NULL);
-	}
-	ft_strlcpy (ptr1, s1, len + 1);
-	return (ptr1);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	const char		*ptr_src;
-	char			*ptr_dst;
-	unsigned int	i;
-
-	ptr_src = src;
-	ptr_dst = dst;
-	i = 0;
-	if (dstsize == 0)
-		return (ft_strlen(src));
-	while ((i < dstsize - 1) && (ptr_src[i] != '\0'))
-	{
-		ptr_dst[i] = ptr_src[i];
-		i++;
-	}
-	ptr_dst[i] = '\0';
-	return (ft_strlen(src));
+	return (i);
 }
