@@ -6,7 +6,7 @@
 /*   By: cmeng <cmeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:13:43 by cmeng             #+#    #+#             */
-/*   Updated: 2022/12/13 06:11:36 by cmeng            ###   ########.fr       */
+/*   Updated: 2022/12/16 17:23:13 by cmeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 char			*get_next_line(int fd);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
-char			*ft_strjoin(char *s1, char *s2);
+char			*ft_strjoin(char *s1, char *s2, int in_len);
 size_t			ft_strlen(const char *str);
 void			*ft_calloc(size_t count, size_t size);
 void			ft_bzero(void *s, size_t n);

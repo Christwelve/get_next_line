@@ -6,7 +6,7 @@
 #    By: cmeng <cmeng@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/13 06:41:13 by cmeng             #+#    #+#              #
-#    Updated: 2022/12/13 07:16:38 by cmeng            ###   ########.fr        #
+#    Updated: 2022/12/14 14:53:10 by cmeng            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ INCLUDE			=	-I incl
 RM				=	rm -f
 AR				=	ar -crs
 
-# %.o: %.c
-# 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJ_FILES)
 	$(AR) $(NAME) $(OBJ_FILES)

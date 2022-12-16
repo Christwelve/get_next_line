@@ -6,13 +6,13 @@
 /*   By: cmeng <cmeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:13:35 by cmeng             #+#    #+#             */
-/*   Updated: 2022/12/13 06:20:55 by cmeng            ###   ########.fr       */
+/*   Updated: 2022/12/16 17:23:12 by cmeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/get_next_line.h"
+#include "get_next_line.h"
 
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strjoin(char *s1, char *s2, int in_len);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
@@ -44,7 +44,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (ptr1);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2, int in_len)
 {
 	char		*ptr1;
 	size_t		len;
@@ -53,8 +53,8 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (s2 == NULL)
 		return (0);
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	ptr1 = ft_calloc(len, sizeof(char));
+	len = ft_strlen(s1) + in_len;
+	ptr1 = ft_calloc(len + 1, sizeof(char));
 	if (ptr1 == NULL)
 		return (free(s1), NULL);
 	i = 0;
@@ -67,7 +67,7 @@ char	*ft_strjoin(char *s1, char *s2)
 			ptr1[i] = s2[j++];
 		i++;
 	}
-	ptr1[i] = 0;
+	ptr1[len] = 0;
 	free(s1);
 	return (ptr1);
 }
