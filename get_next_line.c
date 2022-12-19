@@ -6,7 +6,7 @@
 /*   By: cmeng <cmeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:13:38 by cmeng             #+#    #+#             */
-/*   Updated: 2022/12/18 21:13:37 by cmeng            ###   ########.fr       */
+/*   Updated: 2022/12/19 14:09:22 by cmeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*ft_handle_buf(char *t_buf, int x)
 	else
 	{
 		out = ft_substr(t_buf, i + 1, ft_strlen(t_buf) - (i));
-		free(t_buf);
+		return (free(t_buf), out);
 	}
 	return (out);
 }

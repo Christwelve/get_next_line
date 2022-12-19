@@ -6,7 +6,7 @@
 /*   By: cmeng <cmeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:13:35 by cmeng             #+#    #+#             */
-/*   Updated: 2022/12/16 17:23:12 by cmeng            ###   ########.fr       */
+/*   Updated: 2022/12/19 13:28:49 by cmeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*ft_strjoin(char *s1, char *s2, int in_len)
 	j = 0;
 	while (i < len)
 	{
-		if (i < ft_strlen(s1))
+		if (i < (len - in_len))
 			ptr1[i] = s1[i];
 		else
 			ptr1[i] = s2[j++];
