@@ -6,7 +6,7 @@
 /*   By: cmeng <cmeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:13:38 by cmeng             #+#    #+#             */
-/*   Updated: 2022/12/19 14:09:22 by cmeng            ###   ########.fr       */
+/*   Updated: 2022/12/19 17:45:51 by cmeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*get_next_line(int fd)
 	int				s_read;
 
 	buf = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-	if (buf == NULL)
+	if (!buf)
 		return (NULL);
 	s_read = 1;
 	while (s_read != 0 && !ft_newline(t_buf))
@@ -35,21 +35,24 @@ char	*get_next_line(int fd)
 		if (s_read != 0)
 		{
 			t_buf = ft_strjoin(t_buf, buf, s_read);
+			// if (s_read != BUFFER_SIZE && ft_newline(t_buf) == 0)
+			// 	t_buf = ft_strjoin(t_buf, "\n", 1);
 			if (t_buf == NULL)
 				return (free(buf), NULL);
+			// if (ft_newline(t_buf) != 0)
+			// 	s_read = 0;
 		}
 	}
 	free(buf);
+	// if (ft_newline(t_buf) == 0)
+	// 	t_buf = ft_strjoin(t_buf, "\n", 1);
 	out = ft_handle_buf(t_buf, 0);
 	if (out == NULL)
 		return (free(t_buf), NULL);
 	t_buf = ft_handle_buf(t_buf, 1);
-	if (t_buf == NULL && out == NULL)
-		return (NULL);
 	if (out != NULL)
 		return (out);
-	else
-		return (NULL);
+	return (NULL);
 }
 
 // **********************************************

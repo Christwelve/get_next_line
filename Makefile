@@ -6,14 +6,14 @@
 #    By: cmeng <cmeng@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/13 06:41:13 by cmeng             #+#    #+#              #
-#    Updated: 2022/12/14 14:53:10 by cmeng            ###   ########.fr        #
+#    Updated: 2022/12/19 15:49:05 by cmeng            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			=	get_next_line.a
 CC				=	cc
-SRC_FILES		=	src/get_next_line.c \
-					src/get_next_line_utils.c
+SRC_FILES		=	get_next_line.c \
+					get_next_line_utils.c
 OBJ_FILES		=	$(SRC_FILES:.c=.o)
 CFLAGS			=	-Wall -Wextra -Werror
 INCLUDE			=	-I incl
